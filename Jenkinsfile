@@ -47,8 +47,8 @@ pipeline {
                         fi
                     fi
 
-                    nohup java -jar "$JAR" \
-                        > "$DEPLOY_DIR/app.log" 2>&1 < /dev/null &
+                    setsid nohup java -jar "$JAR" \
+                       > "$DEPLOY_DIR/app.log" 2>&1 < /dev/null &
 
                     echo $! > "$DEPLOY_DIR/app.pid"
 
