@@ -24,5 +24,13 @@ pipeline {
                 archiveArtifacts artifacts: 'target/*.jar'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh '''
+                    cp target/jenkins-cicd-1.0-SNAPSHOT.jar /var/jenkins_home/deployment/
+                '''
+            }
+        }
     }
 }
