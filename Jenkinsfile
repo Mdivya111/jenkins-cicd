@@ -47,7 +47,7 @@ pipeline {
                         fi
                     fi
 
-                    setsid nohup java -jar "$JAR" \
+                    JENKINS_NODE_COOKIE=dontKillMe setsid nohup java -jar "$JAR" \
                        > "$DEPLOY_DIR/app.log" 2>&1 < /dev/null &
 
                     echo $! > "$DEPLOY_DIR/app.pid"
